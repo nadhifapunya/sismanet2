@@ -9,9 +9,13 @@ class Home extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 	public function index() {	
+		$this->load->model('Auth_model');
+		$data['foto'] = $this->Auth_model->getfoto();
 		$data['bg'] = '';
 		$this->load->view('template/header', $data);
-		$this->load->view('home/index');
+		$this->load->model('berita_model');
+		$data['berita'] = $this->berita_model->get3berita();
+		$this->load->view('home/index', $data);
 		$this->load->view('template/footer');
 	}
 

@@ -21,7 +21,7 @@ class Login extends CI_Controller
 		$login = $this->Auth_model->cek_login();
 
 		if($login == 'Gagal'){
-			echo 'Login gagal <a href="'.base_url().'login">ulangi</a>';
+			redirect('/home');
 		}else{
 			$this->session->set_userdata('data_user', $login );
 			redirect('/home');

@@ -9,7 +9,7 @@ class agenda_model extends CI_Model {
 	public function getagenda(){
 
 	
-		$sql = "SELECT * FROM agenda";
+		$sql = "SELECT agenda.*, guru.nama_guru FROM agenda INNER JOIN guru ON agenda.id_author = guru.nip order by agenda.id_agenda desc ";
 		
 		$hasil = $this->db->query($sql);
 

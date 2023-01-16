@@ -9,7 +9,19 @@ class berita_model extends CI_Model {
 	public function getberita(){
 
 	
-		$sql = "SELECT * FROM berita order by id_berita desc";
+		$sql = "SELECT berita.*, guru.nama_guru FROM berita INNER JOIN guru ON berita.id_author = guru.nip order by berita.id_berita desc ";
+		
+		$hasil = $this->db->query($sql);
+
+		// jabarkan hasil
+		$data = $hasil->result_array();
+		// echo '<pre>';print_r($data);echo '</pre>';
+		return $data;
+	}
+
+	public function get3berita(){
+		
+		$sql = "SELECT berita.*, guru.nama_guru FROM berita INNER JOIN guru ON berita.id_author = guru.nip order by berita.id_berita desc limit 3";
 		
 		$hasil = $this->db->query($sql);
 
@@ -33,8 +45,11 @@ class berita_model extends CI_Model {
 		$this->upload->do_upload('foto');
 		//e: upload file
 
-		// $author = $_POST['id_author'];
-		$sql = "INSERT INTO berita (id_berita,judul,isi_berita,foto) VALUES ('','$judul', '$berita', '$nama_gambar')";
+		if(!$this->session->userdata['data_user']['0']['nip']){
+			$author = $this->session->userdata['data_user']['0']['nis'];
+		};
+		$author = $this->session->userdata['data_user']['0']['nip'];
+		$sql = "INSERT INTO berita (id_berita,judul,id_author,isi_berita,foto) VALUES ('','$judul', '$author' ,'$berita', '$nama_gambar')";
 		$this->db->query($sql);
 	}
 	public function getidberita(){

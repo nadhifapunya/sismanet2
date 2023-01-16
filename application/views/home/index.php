@@ -109,45 +109,33 @@
                     </div>
                 </div>
             </div>
-            <div class="row gy-5">
-                <!---->
-                 <div class="col-lg-4 col-md-6 text-bg-dark text-start"> 
-                    <div>
-                        <img class="img-fluid" src="assets/img/berita/batik2.jpeg" alt="SMANET">
-                    </div>
-                        <p class="text-center text-white">3 October 2022 | By Admin</p>
-                        <a href="#" >
-                            <h5 style="text-decoration: none;">Pelaksanaan Hari batik dan Fashion Show Batik</h5>
-                        </a>
-                        <a href="# ">
-                            Baca Selengkapnya
-                        </a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-bg-dark text-start"> 
-                    <div>
-                        <img class="img-fluid" src="assets/img/berita/paskib.jpeg" alt="SMANET">
-                    </div>
-                        <p class="text-center text-white">3 October 2022 | By Admin</p>
-                        <a href="#" >
-                            <h5 style="text-decoration: none;">SMA Negeri 7 Wajo Menjadi Tuan Rumah Parade Paskibra Kabupaten Wajo</h5>
-                        </a>
-                        <a href="#">
-                            Baca Selengkapnya
-                        </a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-bg-dark text-start"> 
-                    <div>
-                        <img class="img-fluid" src="assets/img/berita/gerbang.png" alt="SMANET">
-                    </div>
-                        <p class="text-center text-white">3 October 2022 | By Admin</p>
-                        <a href="#" >
-                            <h5 style="text-decoration: none;">Virus Corona Menyebar lagi, Sekolah Libur Seminggu !</h5>
-                        </a>
-                        <a href="#">
-                            Baca Selengkapnya
-                        </a>
-                </div>
-                            <!---->
-            </div>
+            
+ 			<div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+ 				<?php
+					foreach ($berita as $br) {
+						echo '
+				<div class="col">
+					<div class="card"><img class="card-img-top d-block fit-cover img-fluid" width="317" src="' . base_url() . 'assets/img/berita/' . $br['foto'] . '">
+						<div class="card-body p-4">
+							<p class="text-primary card-text mb-0">Berita</p>
+							<h4 class="card-title">' . $br['judul'] . '</h4>
+							<p class="card-text">' . substr($br['isi_berita'], 0, 80) . '...<br><a href="informasi/berita?id_berita=' . $br['id_berita'] . '" class="text-black">
+							Baca Selengkapnya</a>' . '</p>
+							
+							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$foto[0]['foto'].'">
+								<div>
+									<p class="fw-bold mb-0">' . $br['nama_guru'] . '</p>
+									<p class="text-muted mb-0">' . $br['date'] . '</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					</div>';
+				}
+				?>
+ 			</div>
+		</div>
+
         </div>
     </section>

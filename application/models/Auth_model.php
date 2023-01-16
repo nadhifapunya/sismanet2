@@ -36,20 +36,6 @@ class Auth_model extends CI_Model
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private $_table = "user";
 	const SESSION_KEY = 'user_id';
 
@@ -109,5 +95,14 @@ class Auth_model extends CI_Model
 		];
 
 		return $this->db->update($this->_table, $data, ['id' => $id]);
+	}
+
+	public function getfoto(){
+		$sql = "SELECT foto FROM guru";
+		$hasil = $this->db->query($sql);
+		$data = $hasil->result_array();
+		// echo '<pre>';print_r($data);echo '</pre>';
+		return $data;
+		
 	}
 }
