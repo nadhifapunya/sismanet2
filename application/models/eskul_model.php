@@ -27,6 +27,7 @@ class eskul_model extends CI_Model {
 		$data = $hasil->result_array();
 		return $data;
 	}
+	
 	public function editeskul(){
 
 		$ideskul = $this->input->post('id_eskul');
