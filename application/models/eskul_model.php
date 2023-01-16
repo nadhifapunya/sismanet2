@@ -30,9 +30,9 @@ class eskul_model extends CI_Model {
 	public function editeskul(){
 
 		$ideskul = $this->input->post('id_eskul');
-		$judul = $this->input->post('Judul');
+		$nama_eskul = $this->input->post('nama_eskul');
 		$foto_lama = $this->input->post('foto_lama');
-		$eskul = $this->input->post('eskul');
+		$tentang_eskul = $this->input->post('tentang_eskul');
 		$foto = $_FILES['foto']['name'];
 
 		if($foto){
@@ -51,8 +51,8 @@ class eskul_model extends CI_Model {
 
 			$sql = "UPDATE eskul
 			SET
-				nama_eskul='$Nama_eskul',
-				tentang_eskul='$eskul',
+				nama_eskul='$nama_eskul',
+				tentang_eskul='$tentang_eskul',
 				foto = '$foto'
 			WHERE
 			id_eskul='$ideskul'";
@@ -62,7 +62,7 @@ class eskul_model extends CI_Model {
 			$sql = "UPDATE eskul
 			SET
 				nama_eskul='$nama_eskul',
-				tentang_eskul='$eskul'
+				tentang_eskul='$tentang_eskul'
 			WHERE
 			id_eskul='$ideskul'";
 			$this->db->query($sql);

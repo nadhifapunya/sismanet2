@@ -174,6 +174,11 @@ class Admin extends CI_Controller
 
 	public function edit_eskul($ideskul)
 	{
+		$data['bg4'] = 'active';
+		$data['bg1'] = '';
+		$data['bg3'] = '';
+		$data['bg2'] = '';
+		$data['bg5'] = '';
 		$this->load->model('eskul_model');
 		$data['eskul'] = $this->eskul_model->getideskul($ideskul);
 		$this->load->view('admin/navbar', $data);

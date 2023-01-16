@@ -1,7 +1,5 @@
 <div class="container-fluid">
 	<h3 class="text-dark mb-4">Data Ekstrakulikuler</h3>
-	<a href="tambah_agenda"><button class="btn btn-dark">Tambah Ekstrakulikuler</button></a>
-		<br><br>
 	<div class="card shadow">
 		<div class="card-header py-3">
 			<p class="text-primary m-0 fw-bold">Ekstrakulikuler</p>
