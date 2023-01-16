@@ -19,9 +19,9 @@ class eskul_model extends CI_Model {
 		return $data;
 	}
 
-	public function getideskul(){
+	public function getideskul($ideskul){
 
-		$ideskul = $this->input->get('id_eskul');
+		//$ideskul = $this->input->get('id_eskul');
 		$sql = "SELECT * FROM eskul where id_eskul=$ideskul";
 		$hasil = $this->db->query($sql);
 		$data = $hasil->result_array();

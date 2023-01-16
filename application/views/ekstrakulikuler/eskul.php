@@ -44,8 +44,7 @@
 								<td>' . $es['tentang_eskul'] . '</td>
 								
 								<td>
-								<a class="text-black" href="edit_eskul?id_eskul=' . $es['id_eskul'] . '"><button class="btn btn-dark">Edit</button></a>
-								<a class="text-black" href="hapus_eskul?id_eskul=' . $es['id_eskul'] . '"><button class="btn btn-danger">Hapus</button></a>
+								<a class="text-black" href="edit_eskul/' . $es['id_eskul'] . '"><button class="btn btn-dark">Edit</button></a>
 								</td>
 								</tr>
 								';

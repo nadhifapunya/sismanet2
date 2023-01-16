@@ -172,10 +172,10 @@ class Admin extends CI_Controller
 		redirect('admin/eskul');
 	}
 
-	public function edit_eskul()
+	public function edit_eskul($ideskul)
 	{
 		$this->load->model('eskul_model');
-		$data['eskul'] = $this->eskul_model->getideskul();
+		$data['eskul'] = $this->eskul_model->getideskul($ideskul);
 		$this->load->view('admin/navbar', $data);
 		$this->load->view('Ekstrakulikuler/eskul_edit', $data);
 		$this->load->view('admin/footer');
