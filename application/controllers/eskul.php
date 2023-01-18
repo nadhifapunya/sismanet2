@@ -11,12 +11,14 @@ class Eskul extends CI_Controller
 	}
 	public function index()
 	{
+		$data['title'] = 'Eskul';
 		$data['bg'] = 'bg-smanet';
 		$this->load->view('template/header', $data);
 		$this->load->view('eskul', $data);
 
 	}
 	public function id($id = ''){
+		$data['title'] = 'Eskul';
 		$data['bg'] = 'bg-smanet';
 		// $data['id'] = $id;
 		$this->load->model('eskul_model');

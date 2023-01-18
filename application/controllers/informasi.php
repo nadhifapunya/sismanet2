@@ -10,8 +10,8 @@ class Informasi extends CI_Controller {
 		$this->load->model('agenda_model');
 	}
 	public function index() {
+		$data['title'] = 'Informasi';
 		$this->load->model('Auth_model');
-		$data['foto'] = $this->Auth_model->getfoto();
 		$data['bg'] = 'bg-smanet';
 		$data['berita'] = $this->berita_model->getberita();
 		$data['agenda'] = $this->agenda_model->getagenda();
@@ -19,6 +19,7 @@ class Informasi extends CI_Controller {
 		$this->load->view('informasi', $data);
 	}
 	public function berita(){
+		$data['title'] = 'Berita';
 		$data['bg'] = 'bg-smanet';
 		// $data['id'] = $id;
 		$data['berita'] = $this->berita_model->getidberita();
@@ -27,6 +28,7 @@ class Informasi extends CI_Controller {
 
 	}
 	public function agenda(){
+		$data['title'] = 'Agendax';
 		$data['bg'] = 'bg-smanet';
 		// $data['id'] = $id;
 		$data['agenda'] = $this->agenda_model->getidagenda();

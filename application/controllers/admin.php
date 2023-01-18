@@ -8,7 +8,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->library('session');
-		if(empty($this->session->userdata['data_user'])){
+		if (!($this->session->userdata['data_user']['0']['nip'])) {
 			redirect('/home');
 		}
 	}
@@ -35,7 +35,12 @@ class Admin extends CI_Controller
 		$data['bg4'] = '';
 		$data['bg5'] = '';
 		$this->load->model('agenda_model');
-		$data['agenda'] = $this->agenda_model->getagenda();
+		if ($this->session->userdata['data_user']['0']['role'] == 1){
+			$data['agenda'] = $this->agenda_model->getagenda();
+		}
+		else{
+			$data['agenda'] = $this->agenda_model->getagenda_author();
+		}
 		$this->load->view('admin/navbar', $data);
 		$this->load->view('informasi/agenda');	
 		$this->load->view('admin/footer');
@@ -59,6 +64,11 @@ class Admin extends CI_Controller
 	}
 	public function edit_agenda()
 	{
+		$data['bg2'] = 'active';
+		$data['bg1'] = '';
+		$data['bg3'] = '';
+		$data['bg4'] = '';
+		$data['bg5'] = '';
 		$this->load->model('agenda_model');
 		$data['agenda'] = $this->agenda_model->getidagenda();
 		$this->load->view('admin/navbar', $data);
@@ -86,7 +96,12 @@ class Admin extends CI_Controller
 		$data['bg1'] = '';
 		$data['bg5'] = '';
 		$this->load->model('berita_model');
-		$data['berita'] = $this->berita_model->getberita();
+		if ($this->session->userdata['data_user']['0']['role'] == 1){
+			$data['berita'] = $this->berita_model->getberita();
+		}
+		else{
+			$data['berita'] = $this->berita_model->getberita_author();
+		}
 		$this->load->view('admin/navbar', $data);
 		$this->load->view('informasi/berita');	
 		$this->load->view('admin/footer');
@@ -151,24 +166,8 @@ class Admin extends CI_Controller
 		$this->load->view('admin/footer');
 	}
 
-	public function tambah_eskul()
-	{
-		$data['bg4'] = 'active';
-		$data['bg1'] = '';
-		$data['bg3'] = '';
-		$data['bg2'] = '';
-		$data['bg5'] = '';
-		$this->load->view('admin/navbar', $data);
-		$this->load->view('Ekstrakulikuler/eskul_tambah');	
-		$this->load->view('admin/footer');
-	}
 
-	public function post_eskul()
-	{
-		$this->load->model('eskul_model');
-		$this->eskul_model->tambaheskul();
-		redirect('admin/eskul');
-	}
+
 
 	public function edit_eskul($ideskul)
 	{
@@ -190,12 +189,6 @@ class Admin extends CI_Controller
 		redirect('admin/eskul');
 		
 	}
-	public function hapus_eskul()
-	{
-		$this->load->model('eskul_model');
-		$this->eskul_model->hapuseskul();
-		redirect('admin/eskul');
-	}
 
 	public function pelanggaran()
 	{
@@ -209,6 +202,13 @@ class Admin extends CI_Controller
 		$this->load->view('admin/navbar', $data);
 		$this->load->view('admin/pelanggaran', $data);	
 		$this->load->view('admin/footer');
+	}
+
+	public function hapus_pelanggaran()
+	{
+		$this->load->model('siswa_model');
+		$this->siswa_model->hapuspelanggaran();
+		redirect('admin/pelanggaran');
 	}
 
 

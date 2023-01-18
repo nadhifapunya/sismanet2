@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<h3 class="text-dark mb-4">Data Pelanggaran</h3>
-	<a href="tassmanet"><button class="btn btn-dark">Tambah Data</button></a>
+	<a href="<?= base_url() ?>tassmanet"><button class="btn btn-dark">Tambah Data</button></a>
 		<br><br>
 	<div class="card shadow">
 		<div class="card-header py-3">
@@ -29,6 +29,11 @@
 							<td> Pelanggaran</td>
 							<td> Nis</td>
 							<td> Waktu</td>
+							<?php
+							if ($this->session->userdata['data_user']['0']['role'] == 1){
+								echo'<td> Aksi</td>';
+							}
+							?>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,14 +43,22 @@
 							foreach ($pelanggaran as $pln) {
 								$c = $c + 	1;
 								echo '
-		<tr>
-		<td>' . $c . '</td>
-		<td>' . $pln['nama_siswa'] . '</td>
-		<td>' . $pln['pelanggaran'] . '</td>
-		<td>' . $pln['nis'] . '</td>
-		<td>' . $pln['date'] . '</td>
-		</tr>
-		';
+							<tr>
+							<td>' . $c . '</td>
+							<td>' . $pln['nama_siswa'] . '</td>
+							<td>' . $pln['pelanggaran'] . '</td>
+							<td>' . $pln['nis'] . '</td>
+							<td>' . $pln['date'] . '</td>
+							';?>
+							<?php
+							 if ($this->session->userdata['data_user']['0']['role'] == 1){
+								echo'<td><a class="text-black" href="hapus_pelanggaran?id_pelanggaran=' . $pln['id_pelanggaran'] . '"><button class="btn btn-dark">Hapus</button></a></td>';
+							}
+							?>
+							<?php
+							echo '
+							</tr>
+							';
 							}
 							?>
 

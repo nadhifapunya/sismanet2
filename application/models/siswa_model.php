@@ -64,7 +64,10 @@ class siswa_model extends CI_Model
 		}
 	}
 	public function hitungpelanggaran(){
-		$sql = "SELECT Count(id_pelanggaran) as jumlah from pelanggaran";
+		$sql = "SELECT Count(id_pelanggaran) as jumlah from (SELECT pelanggaran.id_pelanggaran, pelanggaran.nis, siswa.nama_siswa, pelanggaran.JenisPelanggaran as pelanggaran, pelanggaran.date
+		FROM pelanggaran
+		INNER JOIN siswa
+		ON pelanggaran.nis = siswa.nis)t";
 		$hasil = $this->db->query($sql);
 		$data = $hasil->result_array();
 		return $data;
@@ -78,5 +81,11 @@ class siswa_model extends CI_Model
 		$hasil = $this->db->query($sql);
 		$data = $hasil->result_array();
 		return $data;
+	}
+
+	public function hapuspelanggaran(){
+		$idpelanggaran = $this->input->get('id_pelanggaran');
+		$sql = "DELETE FROM pelanggaran where id_pelanggaran='$idpelanggaran'";
+		$this->db->query($sql);
 	}
 }

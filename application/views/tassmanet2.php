@@ -30,14 +30,14 @@
 						<div class="text-left">Pelanggaran :</div>
 						<select class="form-select" name="pelanggaran" onchange="enableSelect(this)" required>
                             <option>Pilih Pelanggaran</option>
-                            <option value="merokok">Merokok</option>
-                            <option value="bolos">Bolos</option>
-                            <option value="alpha">Alpha</option>
-                            <option value="telat">Terlambat</option>	
+                            <option value="Merokok di lingkungan Sekolah">Merokok</option>
+                            <option value="Bolos">Bolos</option>
+                            <option value="Alpha">Alpha</option>
+                            <option value="Terlambat">Terlambat</option>	
                             <option value="1">lainnya</option>
                         </select>
 						<br>
-						<input name="input1" type="text" id="lainnya" class="form-control d-none" placeholder="Masukkan Pelanggaran" required> </input>
+						<input name="input1" type="text" id="lainnya" class="form-control d-none" placeholder="Masukkan Pelanggaran"> </input>
                         <br>
                         <input type="submit" class="btn btn-secondary">
 						<br><br><br>
@@ -57,7 +57,7 @@
         </div>
 		</div>
     </section>
-    <script src="../assets/js/baru.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/baru.js"></script>
 
 </body>
 

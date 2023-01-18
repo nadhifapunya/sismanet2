@@ -9,7 +9,20 @@ class agenda_model extends CI_Model {
 	public function getagenda(){
 
 	
-		$sql = "SELECT agenda.*, guru.nama_guru FROM agenda INNER JOIN guru ON agenda.id_author = guru.nip order by agenda.id_agenda desc ";
+		$sql = "SELECT agenda.*, guru.nama_guru, guru.foto as afoto FROM agenda INNER JOIN guru ON agenda.id_author = guru.nip order by agenda.id_agenda desc ";
+		
+		$hasil = $this->db->query($sql);
+
+		// jabarkan hasil
+		$data = $hasil->result_array();
+		// echo '<pre>';print_r($data);echo '</pre>';
+		return $data;
+	}
+
+	public function getagenda_author(){
+
+	
+		$sql = "SELECT * FROM agenda WHERE id_author = '".$this->session->userdata['data_user']['0']['nip']."'";
 		
 		$hasil = $this->db->query($sql);
 
@@ -26,15 +39,16 @@ class agenda_model extends CI_Model {
 		//s: upload file
 		$this->load->helper('form');
 		$config['upload_path']          = './assets/img/agenda';
-		$config['allowed_types']        = 'gif|jpg|png';
+		$config['allowed_types'] 		= 'gif|jpg|png';
 
 		$this->load->library('upload', $config);
 
 		$this->upload->do_upload('foto');
 		//e: upload file
 
-		// $author = $_POST['id_author'];
-		$sql = "INSERT INTO agenda (id_agenda,judul,isi_agenda,foto) VALUES ('','$judul', '$agenda', '$nama_gambar')";
+		
+		$author = $this->session->userdata['data_user']['0']['nip'];
+		$sql = "INSERT INTO agenda (id_agenda,judul,id_author,isi_agenda,foto) VALUES ('','$judul', '$author','$agenda', '$nama_gambar')";
 		$this->db->query($sql);
 	}
 	public function getidagenda(){

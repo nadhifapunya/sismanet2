@@ -122,7 +122,7 @@
 							<p class="card-text">' . substr($br['isi_berita'], 0, 80) . '...<br><a href="informasi/berita?id_berita=' . $br['id_berita'] . '" class="text-black">
 							Baca Selengkapnya</a>' . '</p>
 							
-							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$foto[0]['foto'].'">
+							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$br['afoto'].'">
 								<div>
 									<p class="fw-bold mb-0">' . $br['nama_guru'] . '</p>
 									<p class="text-muted mb-0">' . $br['date'] . '</p>

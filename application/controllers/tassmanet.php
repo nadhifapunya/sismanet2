@@ -14,12 +14,14 @@ class Tassmanet extends CI_Controller
 	}
 	public function index()
 	{
+		$data['title'] = 'Tassmanet';
 		$data['bg'] = 'bg-smanet';
 		$this->load->view('template/header', $data);
 		$this->load->view('tassmanet');
 	}
 	public function pilih()
 	{
+		$data['title'] = 'Pilih Siswa';
 		$this->load->model('siswa_model');
 		$data['siswa'] = $this->siswa_model->getdatasiswa();
 		$data['bg'] = 'bg-smanet';
@@ -38,7 +40,7 @@ class Tassmanet extends CI_Controller
 		$pln = $this->load->encrypt($pelanggaran, $password);
 		// var_dump($hp);
 		// die;
-		header('Location: http://localhost:3000/Sismanet/api?tujuan='.urlencode($hp).'&nama='.urldecode($nama).'&pesan='.urlencode($pln));
+		header('Location: http://165.22.99.135:3000/Sismanet/api?tujuan='.urlencode($hp).'&nama='.urldecode($nama).'&pesan='.urlencode($pln));
 		// header('Location: http://localhost:3000/Sismanet/api?tujuan='.urlencode($nohp['0']['nohp_ortu']).'&pesan='.urlencode($pelanggaran));
 	}
 }

@@ -16,7 +16,7 @@ class Auth_model extends CI_Model
 		$length = strlen($uname);
 
 		if ($length > 8) {
-			$sql = "SELECT nip,nama_guru,foto FROM guru where nip='$uname' and password='$passwd'";
+			$sql = "SELECT nip,nama_guru,foto,role FROM guru where nip='$uname' and password='$passwd'";
 			$hasil = $this->db->query($sql);
 
 		} else {
@@ -97,12 +97,4 @@ class Auth_model extends CI_Model
 		return $this->db->update($this->_table, $data, ['id' => $id]);
 	}
 
-	public function getfoto(){
-		$sql = "SELECT foto FROM guru";
-		$hasil = $this->db->query($sql);
-		$data = $hasil->result_array();
-		// echo '<pre>';print_r($data);echo '</pre>';
-		return $data;
-		
-	}
 }

@@ -22,7 +22,7 @@
 							<p class="card-text">' . substr($br['isi_berita'], 0, 80) . '...<br><a href="informasi/berita?id_berita=' . $br['id_berita'] . '" class="text-black">
 							Baca Selengkapnya</a>' . '</p>
 							
-							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$foto[0]['foto'].'">
+							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$br['afoto'].'">
 							<div>
 								<p class="fw-bold mb-0">' . $br['nama_guru'] . '</p>
 								<p class="text-muted mb-0">' . $br['date'] . '</p>
@@ -60,13 +60,13 @@
 						<div class="card-body p-4">
 							<p class="text-primary card-text mb-0">Agenda</p>
 							<h4 class="card-title">' . $ag['judul'] . '</h4>
-							<p class="card-text">' . substr($ag['isi_agenda'], 0, 80) . '...<br><a href="informasi/agenda?id_agenda=' . $ag['id_agenda'] . '" class="text-black">
+							<p class="card-text">' . $ag['isi_agenda'] . '	<br><a href="informasi/agenda?id_agenda=' . $ag['id_agenda'] . '" class="text-black">
 							Baca Selengkapnya</a>' . '</p>
 							
-							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$foto[0]['foto'].'">
+							<div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="'.base_url('assets/img/admin/').$ag['afoto'].'">
 								<div>
-									<p class="fw-bold mb-0">' . $br['nama_guru'] . '</p>
-									<p class="text-muted mb-0">' . $br['date'] . '</p>
+									<p class="fw-bold mb-0">' . $ag['nama_guru'] . '</p>
+									<p class="text-muted mb-0">' . $ag['date'] . '</p>
 								</div>
 							</div>
 						</div>
